@@ -1,7 +1,7 @@
 From ubuntu:14.04.3
 MAINTAINER Lyndon li <snakeliwei@gmail.com>
 
-RUN sed -i "s/archive.ubuntu.com/mirrors.aliyun.com/q" /etc/apt/sources.list
+RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/' /etc/apt/sources.list
 RUN apt-get update && \
     apt-get install -y curl && \
     rm -rf /var/lib/apt/lists/*
