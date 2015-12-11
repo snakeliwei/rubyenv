@@ -1,7 +1,7 @@
 From ubuntu:14.04.3
 MAINTAINER Lyndon li <snakeliwei@gmail.com>
 
-RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/' /etc/apt/sources.list
+RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/' /etc/apt/sources.list
 RUN apt-get update && \
     apt-get install -y patch gawk g++ gcc make libc6-dev patch libreadline6-dev zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev && \
     rm -rf /var/lib/apt/lists/*
