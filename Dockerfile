@@ -1,4 +1,4 @@
-From ubuntu:14.04.3
+From debian:jessie
 MAINTAINER Lyndon li <snakeliwei@gmail.com>
 
 RUN apt-get update && \
