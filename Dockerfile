@@ -9,6 +9,6 @@ RUN \curl -sSL https://get.rvm.io | bash -s stable --ruby=2.1.0
 
 RUN rm -rf /var/lib/apt/lists/*
 
-CMD ["source /usr/local/rvm/scripts/rvm"]
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["source /usr/local/rvm/scripts/rvm"]
+CMD ["/bin/bash"]
 
