@@ -13,6 +13,7 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A170311380
 
 RUN mkdir -p /tmp/data 
 COPY . /tmp/data
+WORKDIR /tmp/data
 RUN /bin/bash -l -c "bundle install"
 
 # Clean the apt cache
