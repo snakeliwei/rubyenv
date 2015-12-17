@@ -10,6 +10,9 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A170311380
     /bin/bash -l -c "rvm requirements" && \
     /bin/bash -l -c "rvm install 2.1.0" && \
     /bin/bash -l -c "gem install bundler --no-ri --no-rdoc" && \
+RUN mkdir -p /tmp/data/
+RUN COPY . /tmp/data/
+RUN /bin/bash -l -c "bundle install"
 
 # Clean the apt cache
     rm -rf /var/lib/apt/lists/*
