@@ -15,7 +15,7 @@ RUN COPY . /tmp/data/
 RUN /bin/bash -l -c "bundle install"
 
 # Clean the apt cache
-    rm -rf /var/lib/apt/lists/*
+RUN rm -rf /var/lib/apt/lists/*
 
 CMD ["/bin/bash"]
 
