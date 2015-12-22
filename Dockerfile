@@ -17,8 +17,6 @@ RUN apt-get update \
 # Install rvm, ruby, bundler
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 && \
     \curl -sSL https://get.rvm.io | bash -s stable && \
-    echo 'source /etc/profile.d/rvm.sh' >> /etc/profile && \
-    source /etc/profile && \
     rvm requirements && \
     rvm install 2.1.0 && \
     rvm use --default 2.1.0 && \
