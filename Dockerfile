@@ -5,7 +5,7 @@ RUN apt-get update \
      && apt-get install -y --no-install-recommends \
         git curl procps zlib1g-dev bzip2 ca-certificates libffi-dev \
         libgdbm3 libssl-dev libyaml-dev libcurl4-openssl-dev libxslt-dev \
-        libxml2-dev imagemagick libmagickcore-dev libmagickwand-dev libpq-dev \
+        libxml2-dev imagemagick libmagickcore-dev libmagickwand-dev libpq-dev ruby-dev\
      && apt-get clean \
      && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /etc/dpkg/dpkg.cfg.d/02apt-speedup
 
