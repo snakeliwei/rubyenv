@@ -1,13 +1,6 @@
 From debian:jessie
 MAINTAINER Lyndon li <snakeliwei@gmail.com>
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh && \
-    sed -i 's/^mesg n$/tty -s \&\& mesg n/g' /root/.profile
 
-WORKDIR /code
-
-ENV PATH /usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
-
-ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
      && apt-get install -y --no-install-recommends \
         git curl procps zlib1g-dev bzip2 ca-certificates libffi-dev \
