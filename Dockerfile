@@ -1,8 +1,9 @@
 From debian:jessie
 MAINTAINER Lyndon li <snakeliwei@gmail.com>
 
-RUN apt-get update && \
-    apt-get install -y git curl libcurl4-openssl-dev libxslt-dev libxml2-dev imagemagick libmagickcore-dev libmagickwand-dev libpq-dev 
+RUN apt-get update \
+     && apt-get install -y --no-install-recommends \
+        git curl libcurl4-openssl-dev libxslt-dev libxml2-dev imagemagick libmagickcore-dev libmagickwand-dev libpq-dev 
 
 # Install rvm, ruby, bundler
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 && \
