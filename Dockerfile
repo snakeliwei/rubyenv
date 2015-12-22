@@ -1,7 +1,6 @@
 From debian:jessie
 MAINTAINER Lyndon li <snakeliwei@gmail.com>
 
-ENV RUBY
 RUN apt-get update \
      && apt-get install -y --no-install-recommends \
         git curl libcurl4-openssl-dev libxslt-dev libxml2-dev imagemagick libmagickcore-dev libmagickwand-dev libpq-dev 
