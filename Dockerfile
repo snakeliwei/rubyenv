@@ -15,7 +15,7 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A170311380
 
 ENV PATH /usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-RUN source /usr/local/rvm/scripts/rvm \
+RUN source ~/.rvm/scripts/rvm \
     && rvm requirements \
     && rvm install $RUBY_VERSION \
     && rvm use $RUBY_VERSION --default \
