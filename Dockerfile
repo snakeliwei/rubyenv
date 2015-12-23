@@ -12,9 +12,9 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A170311380
      && \curl -sSL https://get.rvm.io | bash -s stable \
      && source /usr/local/rvm/scripts/rvm
      
-RUN rvm requirements \
-     && rvm install $RUBY_VERSION \
-     && rvm use $RUBY_VERSION --default \
+RUN /usr/local/rvm/scripts/rvm requirements \
+     && /usr/local/rvm/scripts/rvm install $RUBY_VERSION \
+     && /usr/local/rvm/scripts/rvm use $RUBY_VERSION --default \
      && gem install bundler --no-doc --no-ri
     
 RUN mkdir -p /tmp/data 
