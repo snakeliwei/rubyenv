@@ -9,15 +9,14 @@ RUN apt-get update \
 
 ENV RUBY_VERSION 2.1.0
 ENV PATH /usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
 # Install RVM, RUBY, bundler 
-RUN curl -L https://get.rvm.io | bash -s stable \
-    && echo '[[ -s "/etc/profile.d/rvm.sh" ]] && . "/etc/profile.d/rvm.sh" # Load RVM function' >> /.bashrc \
-    && /bin/bash -l -c "source /.bashrc" \
-#    && /bin/bash -l -c 'source /usr/local/rvm/scripts/rvm' \
+RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
+    && \curl -sSL https://get.rvm.io | bash -s stable \
+    && echo 'source /usr/local/rvm/scripts/rvm' >> /etc/bash.bashrc \
     && /bin/bash -l -c 'rvm requirements' \
     && /bin/bash -l -c 'rvm install $RUBY_VERSION' \
     && /bin/bash -l -c 'rvm use $RUBY_VERSION --default' \
-    && /bin/bash -l -c 'rvm rubygems current' \
     && /bin/bash -l -c 'gem install bundler --no-doc --no-ri'
     
 RUN mkdir -p /tmp/data 
