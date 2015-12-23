@@ -16,15 +16,15 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A170311380
 
 ENV PATH /usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-RUN /bin/bash -l -c "source /etc/profile.d/rvm.sh" \
-    && /bin/bash -l -c 'rvm requirements' \
-    && /bin/bash -l -c 'rvm install $RUBY_VERSION' \
-    && /bin/bash -l -c 'rvm use $RUBY_VERSION --default' \
-    && /bin/bash -l -c 'gem install bundler --no-doc --no-ri'
+RUN source /usr/local/rvm/scripts/rvm \
+    && rvm requirements \
+    && rvm install $RUBY_VERSION \
+    && rvm use $RUBY_VERSION --default \
+    && gem install bundler --no-doc --no-ri
     
 RUN mkdir -p /tmp/data 
 COPY . /tmp/data
 WORKDIR /tmp/data
-RUN /bin/bash -l -c 'bundle install'
+RUN bundle install
 
 CMD ["irb"]
