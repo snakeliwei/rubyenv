@@ -22,4 +22,4 @@ RUN /bin/bash -l -c "bundle install" \
      && apt-get clean \
      && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
      
-CMD ["irb"]
+CMD ["/bin/bash"]
