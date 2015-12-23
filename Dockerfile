@@ -1,4 +1,4 @@
-From debain:jessie
+From debian:jessie
 MAINTAINER Lyndon li <snakeliwei@gmail.com>
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
