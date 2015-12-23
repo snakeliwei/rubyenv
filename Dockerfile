@@ -1,12 +1,10 @@
-From debian:jessie
+From ubuntu:14.04.3
 MAINTAINER Lyndon li <snakeliwei@gmail.com>
 
 RUN  #sed -i 's/httpredir.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
      apt-get update \
      && apt-get install -y --no-install-recommends \
-        git curl imagemagick libmagickcore-dev libmagickwand-dev libpq-dev \
-     && apt-get clean \
-     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
+        git curl imagemagick libmagickcore-dev libmagickwand-dev libpq-dev
 
 ENV RUBY_VERSION 2.1.0
 
@@ -25,6 +23,9 @@ RUN source /usr/local/rvm/scripts/rvm \
 RUN mkdir -p /tmp/data 
 COPY . /tmp/data
 WORKDIR /tmp/data
-RUN bundle install
+RUN bundle install \
+     && apt-get clean \
+     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
+
 
 CMD ["irb"]
