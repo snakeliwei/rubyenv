@@ -10,8 +10,9 @@ RUN apt-get update \
 ENV RUBY_VERSION 2.1.0
 ENV PATH /usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # Install RVM, RUBY, bundler 
-RUN curl -sSL -k https://get.rvm.io | bash -s stable \
-#    && /bin/bash -l -c "source /etc/profile.d/rvm.sh" \
+RUN curl -L https://get.rvm.io | bash -s stable \
+    && echo '[[ -s "/etc/profile.d/rvm.sh" ]] && . "/etc/profile.d/rvm.sh" # Load RVM function' >> /.bashrc \
+    && /bin/bash -l -c "source /.bashrc" \
 #    && /bin/bash -l -c 'source /usr/local/rvm/scripts/rvm' \
     && /bin/bash -l -c 'rvm requirements' \
     && /bin/bash -l -c 'rvm install $RUBY_VERSION' \
