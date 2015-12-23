@@ -1,7 +1,8 @@
 From debian:jessie
 MAINTAINER Lyndon li <snakeliwei@gmail.com>
 
-RUN apt-get update \
+RUN  #sed -i 's/httpredir.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
+     apt-get update \
      && apt-get install -y --no-install-recommends \
         git curl imagemagick libmagickcore-dev libmagickwand-dev libpq-dev \
      && apt-get clean \
