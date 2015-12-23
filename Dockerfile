@@ -5,23 +5,14 @@ RUN apt-get update \
      && apt-get install -y --no-install-recommends \
         git curl imagemagick libmagickcore-dev libmagickwand-dev libpq-dev \
      && apt-get clean \
-     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /etc/dpkg/dpkg.cfg.d/02apt-speedup
-
-# Setup User
-RUN useradd --home /home/worker -M worker -K UID_MIN=10000 -K GID_MIN=10000 -s /bin/bash \
-    && mkdir /home/worker \
-    && chown worker:worker /home/worker \
-    && adduser worker sudo \
-    && echo 'worker ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers \
-    
-USER worker
+     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 ENV RUBY_VERSION 2.1.0
-
+ENV PATH /usr/local/rvm/bin:$PATH 
 # Install RVM, RUBY, bundler 
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
     && \curl -sSL https://get.rvm.io | bash -s stable \
-    && /bin/bash -l -c 'source /etc/profile.d/rvm.sh' \
+    && /bin/bash -l -c 'source /usr/local/rvm/scripts/rvm' \
     && /bin/bash -l -c 'rvm requirements' \
     && /bin/bash -l -c 'rvm install $RUBY_VERSION' \
     && /bin/bash -l -c 'rvm use $RUBY_VERSION --default' \
