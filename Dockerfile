@@ -1,5 +1,6 @@
 From ubuntu:14.04.3
 MAINTAINER Lyndon li <snakeliwei@gmail.com>
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 RUN  #sed -i 's/httpredir.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
      apt-get update \
