@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER Lyndon li <snakeliwei@gmail.com>
 
 RUN apt-get update \
-     && apt-get install -qy git curl imagemagick libmagickcore-dev libmagickwand-dev libpq-dev libcurl3-dev
+     && apt-get install -qy git curl imagemagick libmagickcore-dev libmagickwand-dev libpq-dev libcurl3-dev nodejs
 
 ENV RUBY_VERSION 2.1.0
 
