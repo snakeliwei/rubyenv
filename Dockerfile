@@ -1,8 +1,9 @@
 FROM debian:jessie
 MAINTAINER Lyndon li <snakeliwei@gmail.com>
 
-RUN apt-get update \
-     && apt-get install -qy git curl imagemagick libmagickcore-dev libmagickwand-dev libpq-dev libcurl3-dev nodejs
+COPY ./sources.list /etc/apt/sources.list
+RUN  apt-get update \
+     && apt-get install -qy git curl imagemagick libmagickcore-dev libmagickwand-dev libpq-dev libcurl3-dev nodejs vim
 
 ENV RUBY_VERSION 2.1.0
 
@@ -12,13 +13,13 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A170311380
      && /bin/bash -l -c "rvm requirements" \ 
      && /bin/bash -l -c "rvm install $RUBY_VERSION" \ 
      && /bin/bash -l -c "rvm use $RUBY_VERSION --default" \ 
-     && /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
-
-RUN mkdir -p /tmp/data 
-COPY . /tmp/data
-WORKDIR /tmp/data
+     && /bin/bash -l -c "gem install bundler --no-ri --no-rdoc" \
+     && mkdir -p /tmp 
+     
+COPY . /tmp
+WORKDIR /tmp
 RUN /bin/bash -l -c "bundle install" \
      && apt-get clean \
-     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
+     && rm -rf /var/lib/apt/lists/* /tmp /var/tmp/* 
      
 CMD ["/bin/bash"]
