@@ -8,7 +8,7 @@ RUN  apt-get update \
                             libmagickcore-dev \
                             libmagickwand-dev \
                             libpq-dev \
-                            libcurl3-dev 
+                            libcurl3-dev \
                             nodejs \
                             vim
 
