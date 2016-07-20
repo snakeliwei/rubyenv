@@ -2,7 +2,8 @@ FROM debian:jessie
 MAINTAINER Lyndon li <snakeliwei@gmail.com>
 
 RUN  apt-get update \
-     && apt-get install -qy git \
+     && apt-get install -y --no-install-recommends \
+                            git \
                             curl \
                             imagemagick \
                             libmagickcore-dev \
