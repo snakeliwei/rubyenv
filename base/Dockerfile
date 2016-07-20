@@ -1,6 +1,8 @@
 FROM debian:jessie
 MAINTAINER Lyndon li <snakeliwei@gmail.com>
 
+COPY ./base/sources.list /etc/apt/sources.list
+
 RUN  apt-get update \
      && apt-get install -qy git \
                             curl \
