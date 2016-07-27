@@ -15,6 +15,12 @@ RUN  apt-get update \
                             vim
 
 ENV RUBY_VERSION 2.1.0
+ENV S6_OVERLAY_VERSION 1.18.1.3
+
+# Add s6-overlay
+ADD https://github.com/just-containers/s6-overlay/releases/download/v$S6_OVERLAY_VERSION/s6-overlay-amd64.tar.gz /tmp/
+RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C / &&\
+    rm /tmp/s6-overlay-amd64.tar.gz && \
 
 # Install RVM, RUBY, bundler 
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
@@ -26,4 +32,4 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A170311380
      && apt-get clean \
      && rm -rf /var/lib/apt/lists/* /tmp /var/tmp/* 
      
-CMD ["/bin/bash"]
+ENTRYPOINT ["/init"]
