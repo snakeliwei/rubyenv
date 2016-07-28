@@ -4,7 +4,7 @@ MAINTAINER Lyndon <snakeliwei@gmail.com>
 ADD ./Gemfile /tmp
 ADD ./Gemfile.lock /tmp
 
-WORKDIR /tmp
-RUN /bin/bash -l -c "source /etc/profile.d/rvm.sh" &&\
+RUN /bin/bash -l -c "cd /tmp" &&\
+    /bin/bash -l -c "source /etc/profile.d/rvm.sh" &&\
     /bin/bash -l -c "bundle install" &&\
     rm -rf /tmp/*
