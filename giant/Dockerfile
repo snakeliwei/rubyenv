@@ -1,7 +1,8 @@
 FROM snakeliwei/rubyenv:base
 MAINTAINER Lyndon <snakeliwei@gmail.com>
 
-ADD ./Gem* /tmp
+RUN mkdir -p /tmp
+COPY Gem* /tmp/
 
 RUN /bin/bash -l -c "cd /tmp" && \
     /bin/bash -l -c "source /etc/profile.d/rvm.sh" && \
