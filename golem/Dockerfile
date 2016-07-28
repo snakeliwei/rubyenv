@@ -7,4 +7,4 @@ COPY . /temp
 RUN cd /temp && \
     /bin/bash -l -c "source /etc/profile.d/rvm.sh" && \
     /bin/bash -l -c "bundle install" && \
-    rm -rf /tmp/*
+    rm -rf /tmp/* /temp
